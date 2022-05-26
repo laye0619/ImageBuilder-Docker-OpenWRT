@@ -1,0 +1,30 @@
+FROM continuumio/miniconda3:latest
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y sudo \
+    && apt-get install -y openssh-server \
+    && mkdir -p /var/run/sshd \
+    && echo "root:toorroot!" | chpasswd \
+    && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+
+    # install zsh & oh-my-zsh
+    && sudo apt-get install -y zsh \
+    && zsh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" \
+    && chsh -s /bin/zsh \
+    && conda init zsh \
+
+    #install pip
+    && apt install -y python3-pip \
+    
+    #setup my conda env
+    && conda create -y -n backtest_rqalpha python==3.9.5 \
+    && conda create -y -n my_portfolio_analysis python==3.9.5 \
+    && conda create -y -n ofanalysis python==3.9.5 \
+    && conda create -y -n totango python==3.9.5 \
+    && conda create -y -n general python==3.9.5 \
+    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && sudo apt-get -y install -f ./google-chrome-stable_current_amd64.deb \
+    && rm ./google-chrome-stable_current_amd64.deb
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]

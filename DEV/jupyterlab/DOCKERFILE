@@ -1,0 +1,44 @@
+FROM jupyter/base-notebook:latest
+# to avoid interaction for installing TZdata
+ENV TZ=Asia/Shanghai
+USER root
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+    && apt-get update \
+    && echo "jovyan:toorroot!" | chpasswd \
+    && echo "jovyan ALL=(ALL:ALL) ALL" >> /etc/sudoers \
+
+    # install chrome (optional)
+    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && sudo apt-get -y install -f ./google-chrome-stable_current_amd64.deb \
+    && rm ./google-chrome-stable_current_amd64.deb
+
+USER jovyan
+
+RUN pip install jupyterlab_code_formatter \
+    && pip install autopep8 isort \
+    && jupyter server extension enable --py jupyterlab_code_formatter \
+    && pip install jupyterlab-unfold \
+    && pip install theme-darcula \
+    && pip install jupyterlab-theme-solarized-dark \
+    && pip install jupyterlab-language-pack-zh-CN \
+
+    # install jupyter-lsp
+    && conda install -y -c conda-forge 'jupyterlab>=3.0.0,<4.0.0a0' jupyterlab-lsp \
+    && jupyter labextension install @krassowski/jupyterlab-lsp \
+    && pip install 'python-lsp-server[all]' \
+
+    # install addtional kernel for jupyterlab
+    && conda install ipykernel \
+    && conda create -n inv_mgr python==3.9.5 ipykernel \
+    && source activate inv_mgr \
+
+    # install my package (optional)
+    && pip install rqalpha \
+    && pip install my_portfolio_analysis \
+    && pip install ofanalysis \
+    && conda install -y dtale \
+    && python -m ipykernel install --user --name inv_mgr --display-name inv_mgr
+
+
+EXPOSE 8888
+EXPOSE 40000

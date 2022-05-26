@@ -1,0 +1,24 @@
+FROM continuumio/miniconda3:latest
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y sudo \
+    && apt-get install -y openssh-server \
+    && mkdir -p /var/run/sshd \
+    && echo "root:roottoor" | chpasswd \
+    && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+
+    #安装pip
+    && apt install -y python3-pip \
+
+    #安装Jupyter notebook
+    && conda install jupyter -y --quiet \
+    && jupyter notebook --generate-config \
+    && conda install -y -c conda-forge jupyter_contrib_nbextensions \
+    && conda install -y -c conda-forge jupyter_nbextensions_configurator \
+    && conda install -y -c conda-forge jupyterthemes
+
+COPY ./jupyter_notebook_config.py /root/.jupyter/
+
+EXPOSE 22
+EXPOSE 8888
+CMD ["/usr/sbin/sshd", "-D"]

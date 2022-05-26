@@ -1,0 +1,50 @@
+FROM jupyter/base-notebook:latest
+# to avoid interaction for installing TZdata
+ENV TZ=Asia/Shanghai
+USER root
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+    && apt-get update \
+    && apt-get install -y git \
+
+    # install chrome (optional)
+    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && sudo apt-get -y install -f ./google-chrome-stable_current_amd64.deb \
+    && rm ./google-chrome-stable_current_amd64.deb \
+
+    # install zsh & oh-my-zsh
+    && apt-get install -y zsh \
+    && zsh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" \
+    && chsh -s $(which zsh) \
+    && conda init zsh
+
+USER 1000
+
+RUN pip install jupyterlab_code_formatter \
+    && pip install autopep8 isort \
+    && jupyter server extension enable --py jupyterlab_code_formatter \
+    && pip install jupyterlab-unfold \
+    && pip install theme-darcula \
+    && pip install jupyterlab-theme-solarized-dark \
+    && pip install jupyterlab-language-pack-zh-CN \
+
+    # install jupyter-lsp
+    && conda install -y -c conda-forge 'jupyterlab>=3.0.0,<4.0.0a0' jupyterlab-lsp \
+    && jupyter labextension install @krassowski/jupyterlab-lsp \
+    && pip install 'python-lsp-server[all]' \
+
+    # setup my conda env
+    && conda create -y -n inv_mgr_jupyter python==3.9.5 ipykernel \
+    && conda create -y -n backtest_rqalpha python==3.9.5 \
+    && conda create -y -n my_portfolio_analysis python==3.9.5 \
+    && conda create -y -n ofanalysis python==3.9.5 \
+    && conda create -y -n totango python==3.9.5 \
+    && conda create -y -n general python==3.9.5 \
+
+    # add ipykernel and final clean up
+    && source activate inv_mgr_jupyter \
+    && python -m ipykernel install --user --name inv_mgr_jupyter --display-name inv_mgr_jupyter \
+    && conda clean --all -f -y
+
+
+EXPOSE 8888
+EXPOSE 40000

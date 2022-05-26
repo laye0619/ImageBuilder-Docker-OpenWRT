@@ -1,0 +1,23 @@
+FROM ubuntu:latest
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y sudo git openssh-server \
+    && mkdir -p /var/run/sshd \
+    && echo "root:toorroot!" | chpasswd \
+    && useradd -ms /bin/bash layewang \
+    && echo "layewang:toorroot!" | chpasswd \
+    && adduser layewang sudo \
+
+    # install zsh & oh-my-zsh
+    && apt-get install -y zsh \
+    && zsh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" \
+    && chsh -s $(which zsh) \
+
+    # Clean apt-cache
+    && sudo apt autoremove -y \
+    && sudo apt clean -y \
+    && sudo rm -rf /var/lib/apt/lists/*
+
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]

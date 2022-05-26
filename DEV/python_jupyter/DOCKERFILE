@@ -1,0 +1,31 @@
+FROM ubuntu:latest
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y sudo \
+    && apt-get install -y openssh-server \
+    && mkdir -p /var/run/sshd \
+    && echo "root:toorroot!" | chpasswd \
+    && useradd -ms /bin/bash layewang \
+    && echo "layewang:toorroot!" | chpasswd \
+    && adduser layewang sudo \
+    && ln -s /usr/bin/python3.8 /usr/bin/python \
+
+    #安装pip
+    && apt install -y python3-pip \
+
+    #安装Jupyter notebook
+    && pip install notebook \
+    && jupyter notebook --generate-config \
+    && pip install jupyter_contrib_nbextensions \
+    && pip install jupyter_nbextensions_configurator \
+    && pip install jupyterthemes
+
+COPY ./jupyter_notebook_config.py /home/layewang/.jupyter/
+
+RUN jupyter contrib nbextension install --system \
+    && jupyter nbextensions_configurator enable --system \
+    && chown -R layewang:layewang /home/layewang/
+
+EXPOSE 22
+EXPOSE 8888
+CMD ["/usr/sbin/sshd", "-D"]
