@@ -9,6 +9,9 @@
 - dev_env_jupyterlab(laye0619/dev_env_jupyterlab)
 - Minicoda+codeserver(laye0619/dev_env_codeserver)  - 正在使用作为开发及运行环境
 - Ubuntu (laye0619/ubuntu)
+- my_openwrt (laye0619/openwrt)
+    从https://supes.top/上定制的镜像
+    具体可以参见我的notion
 
 ## 关于Docker的清理
 
