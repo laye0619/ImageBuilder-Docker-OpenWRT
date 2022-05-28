@@ -11,6 +11,8 @@
 - Ubuntu (laye0619/ubuntu)
 - my_openwrt (laye0619/openwrt)
     从https://supes.top/上定制的镜像
+    默认后台：192.168.1.2 -> root/laye8*****
+    开启旁路由模式，关闭ipv6
     具体可以参见我的notion
 
 ## 关于Docker的清理
