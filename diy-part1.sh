@@ -19,4 +19,8 @@
 #echo 'src-git openclash https://github.com/vernesong/OpenClash' >>feeds.conf.default
 #echo 'src-git autoreboot https://github.com/f8q8/luci-app-autoreboot' >>feeds.conf.default
 #echo 'src-git argon https://github.com/jerrykuku/luci-theme-argon' >>feeds.conf.default
-echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >>feeds.conf.default
+
+#echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >>feeds.conf.default
+
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
