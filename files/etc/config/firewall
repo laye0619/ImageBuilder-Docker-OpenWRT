@@ -122,7 +122,7 @@ config include 'openclash'
 	option reload '1'
 
 config rule
-	option name 'test'
+	option name 'MiCam'
 	list proto 'udp'
 	option src '*'
 	option dest '*'
