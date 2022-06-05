@@ -17,7 +17,6 @@ config zone
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
-	option mtu_fix '1'
 
 config forwarding
 	option src 'lan'
