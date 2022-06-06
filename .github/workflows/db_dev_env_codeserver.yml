@@ -1,4 +1,4 @@
-name: ci
+name: build docker image dev_env_codeserver.
 
 on:
   repository_dispatch:
