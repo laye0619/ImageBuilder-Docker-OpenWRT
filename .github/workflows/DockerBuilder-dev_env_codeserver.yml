@@ -1,6 +1,9 @@
 name: docker-builder-dev_env_codeserver
 
 on:
+  push:
+    tags:
+      - v*
 
 env:
   TAG: 0.6
