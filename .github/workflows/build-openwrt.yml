@@ -11,17 +11,24 @@
 name: Build OpenWrt
 
 on:
-  repository_dispatch:
   workflow_dispatch:
     inputs:
+      repo:
+        description: 'repo of openwrt'
+        required: true
+        default: 'https://www.github.com/openwrt/openwrt'
+      branch:
+        description: 'repo branch'
+        required: true
+        default: 'master'
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
 
 env:
-  REPO_URL: https://www.github.com/openwrt/openwrt
-  REPO_BRANCH: master
+  REPO_URL: ${{ github.event.inputs.repo }}
+  REPO_BRANCH: ${{ github.event.inputs.branch }}
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
