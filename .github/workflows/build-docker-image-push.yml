@@ -1,7 +1,6 @@
 name: Docker Image Builder
 
 on:
-  # repository_dispatch:
   workflow_dispatch:
     inputs:
       image_folder:
@@ -14,11 +13,6 @@ on:
       image_tag:
         description: "image tag"
         required: true
-
-# env:
-#   DOCKER_IMAGE_FOLDER: ${{ env.INPUT_IMAGE_FOLDER }}
-#   DOCKER_IMAGE_NAME: ${{ env.INPUT_IMAGE_NAME }}
-#   TAG: ${{ env.INPUT_IMAGE_TAG }}
 
 jobs:
   docker:
@@ -40,13 +34,6 @@ jobs:
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
-        # with:
-        #   context: ./DOCKER/${{ env.DOCKER_IMAGE_FOLDER }}/${{ env.DOCKER_IMAGE_NAME }}/
-        #   file: ./DOCKER/${{ env.DOCKER_IMAGE_FOLDER }}/${{ env.DOCKER_IMAGE_NAME }}/DOCKERFILE
-        #   push: true
-        #   tags: |
-        #     laye0619/${{ env.DOCKER_IMAGE_NAME }}:latest
-        #     laye0619/${{ env.DOCKER_IMAGE_NAME }}:${{ env.TAG }}
         with:
           context: ./DOCKER/${{ github.event.inputs.image_folder }}/${{ github.event.inputs.image_name }}/
           file: ./DOCKER/${{ github.event.inputs.image_folder }}/${{ github.event.inputs.image_name }}/DOCKERFILE
