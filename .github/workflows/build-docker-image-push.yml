@@ -1,14 +1,16 @@
 name: build docker image and push to dockerhub
 
 on:
-  inputs:
-    image_folder:
-      description: 'image category [DEV, VPS]'
-      required: true
-      default: 'DEV'
-    image_name:
-      description: 'image name'
-      required: true
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      image_folder:
+        description: 'image category [DEV, VPS]'
+        required: true
+        default: 'DEV'
+      image_name:
+        description: 'image name'
+        required: true
   
 env:
   DOCKER_IMAGE_FOLDER: DEV
