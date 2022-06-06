@@ -50,4 +50,5 @@ jobs:
         echo "::set-output name=release_tag::${{ env.TAG }}_$(date +"%m%d")"
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         echo "::set-output name=status::success"
+        echo ${{ steps.tag.outputs.release_tag }}
 
