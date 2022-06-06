@@ -1,7 +1,7 @@
 name: Docker Image Builder
 
 on:
-  repository_dispatch:
+  # repository_dispatch:
   workflow_dispatch:
     inputs:
       image_folder:
@@ -48,9 +48,9 @@ jobs:
         #     laye0619/${{ env.DOCKER_IMAGE_NAME }}:latest
         #     laye0619/${{ env.DOCKER_IMAGE_NAME }}:${{ env.TAG }}
         with:
-          context: ./DOCKER/${{ env.INPUT_IMAGE_FOLDER }}/${{ env.INPUT_IMAGE_NAME }}/
-          file: ./DOCKER/${{ env.INPUT_IMAGE_FOLDER }}/${{ env.INPUT_IMAGE_NAME }}/DOCKERFILE
+          context: ./DOCKER/${{ github.event.inputs.image_folder }}/${{ github.event.inputs.image_name }}/
+          file: ./DOCKER/${{ github.event.inputs.image_folder }}/${{ github.event.inputs.image_name }}/DOCKERFILE
           push: true
           tags: |
-            laye0619/${{ env.INPUT_IMAGE_NAME }}:latest
-            laye0619/${{ env.INPUT_IMAGE_NAME }}:${{ env.INPUT_IMAGE_TAG }}
+            laye0619/${{ github.event.inputs.image_name }}:latest
+            laye0619/${{ github.event.inputs.image_name }}:${{ github.event.inputs.image_tag }}
