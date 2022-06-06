@@ -1,18 +1,21 @@
-name: build docker image dev_env_codeserver.
+name: build docker image and push to dockerhub
 
 on:
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
+  
+env:
+  DOCKER_IMAGE_FOLDER: DEV
+  DOCKER_IMAGE_NAME: dev_env_codeserver
+  TAG: 0.6
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@main
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -32,7 +35,9 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./DOCKERFILE/DEV/dev_env_codeserver/
-          file: ./DOCKERFILE/DEV/dev_env_codeserver/Dockerfile
+          context: ./DOCKER/${{ env.DOCKER_IMAGE_FOLDER }}/${{ env.DOCKER_IMAGE_NAME }}/
+          file: ./DOCKER/${{ env.DOCKER_IMAGE_FOLDER }}/${{ env.DOCKER_IMAGE_NAME }}/DOCKERFILE
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/dev_env_codeserver:latest
+          tags: |
+            laye0619/${{ env.DOCKER_IMAGE_NAME }}:latest
+            laye0619/${{ env.DOCKER_IMAGE_NAME }}:${{ env.TAG }}
