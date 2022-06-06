@@ -1,7 +1,8 @@
 
-# [DIY云编译教程参考](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+# [1. 关于openwrt的DIY云编译教程参考](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
-# DockerImageBuilder
+# 2. DockerImageBuilder
+**可以使用Github Action自动build镜像并上传至dockerhub**
 ## VPS
 - youtube_dl+aria2+bypy for vsp(laye0619/ydl_bypy_vps)
 ## DEV
