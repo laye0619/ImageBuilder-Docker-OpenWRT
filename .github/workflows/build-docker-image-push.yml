@@ -16,9 +16,9 @@ on:
         required: true
 
 env:
-  DOCKER_IMAGE_FOLDER: github.event.inputs.image_folder
-  DOCKER_IMAGE_NAME: github.event.inputs.image_name
-  TAG: github.event.inputs.image_tag
+  DOCKER_IMAGE_FOLDER: ${{ env.INPUT_IMAGE_FOLDER }}
+  DOCKER_IMAGE_NAME: ${{ env.INPUT_IMAGE_NAME }}
+  TAG: ${{ env.INPUT_IMAGE_TAG }}
 
 jobs:
   docker:
