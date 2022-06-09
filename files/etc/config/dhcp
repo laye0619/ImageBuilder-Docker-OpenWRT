@@ -32,15 +32,3 @@ config dhcp lan
 config dhcp wan
 	option interface	wan
 	option ignore	1
-
-config host
-	option dns '1'
-	option mac '78:8B:2A:61:9B:4F'
-	option ip '192.168.1.201'
-	option name 'MiCamSF'
-
-config host
-	option name 'MiCamKT'
-	option dns '1'
-	option mac '20:F4:1B:F9:B3:E2'
-	option ip '192.168.1.202'
