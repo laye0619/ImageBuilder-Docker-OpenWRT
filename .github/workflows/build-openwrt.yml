@@ -169,7 +169,7 @@ jobs:
     - name: Copy tar.gz to docker builder folder
       id: copyfile
       run: |
-        cp ${{ env.FIRMWARE }}/openwrt-x86-64-generic-rootfs.tar.gz ./DOCKER/DEV/openwrt/
+        cp ${{ env.FIRMWARE }}/*rootfs.tar.gz ./DOCKER/DEV/openwrt/
         echo "::set-output name=status::success"
 
     - name: Set up QEMU
