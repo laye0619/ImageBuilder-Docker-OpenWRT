@@ -16,7 +16,7 @@ on:
       tag:
         description: 'release tag'
         required: true
-        default: 'my_official'
+        default: 'official'
       repo:
         description: 'repo of openwrt'
         required: true
@@ -189,8 +189,8 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ./DOCKER/DEV/openwrt/
-        file: ./DOCKER/DEV/openwrt/DOCKERFILE
+        context: ./DOCKER/openwrt/
+        file: ./DOCKER/openwrt/DOCKERFILE
         push: true
         tags: |
           laye0619/openwrt:${{ steps.tag.outputs.release_tag }}
