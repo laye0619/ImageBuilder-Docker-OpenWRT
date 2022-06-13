@@ -169,6 +169,7 @@ jobs:
     - name: Copy tar.gz to docker builder folder
       id: copyfile
       run: |
+        rm -f ./DOCKER/openwrt/*rootfs.tar.gz
         cp ${{ env.FIRMWARE }}/*rootfs.tar.gz ./DOCKER/openwrt/
         echo "::set-output name=status::success"
 
