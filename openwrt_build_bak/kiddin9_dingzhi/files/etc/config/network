@@ -22,9 +22,3 @@ config interface 'lan'
 	option dns '223.5.5.5 114.114.114.114 8.8.4.4'
 	option delegate '0'
 
-config interface 'wan'
-	option proto 'dhcp'
-	option peerdns '0'
-	option ipv6 '0'
-	option delegate '0'
-
