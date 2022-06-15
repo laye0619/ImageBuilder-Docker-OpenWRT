@@ -1,26 +1,14 @@
 config defaults
 	option input 'ACCEPT'
 	option output 'ACCEPT'
-	option forward 'ACCEPT'
-
-config zone
-	option name 'lan'
-	list network 'lan'
-	option input 'ACCEPT'
-	option output 'ACCEPT'
+	option fullcone '1'
 	option forward 'ACCEPT'
 
 config zone
 	option name 'wan'
-	list network 'wan'
-	list network 'wan6'
-	option input 'REJECT'
 	option output 'ACCEPT'
-	option forward 'REJECT'
-
-config forwarding
-	option src 'lan'
-	option dest 'wan'
+	option input 'ACCEPT'
+	option forward 'ACCEPT'
 
 config rule
 	option name 'Allow-DHCP-Renew'
@@ -101,19 +89,13 @@ config rule
 	option target 'ACCEPT'
 
 config rule
-	option name 'Allow-IPSec-ESP'
+	option name 'Support-UDP-Traceroute'
 	option src 'wan'
-	option dest 'lan'
-	option proto 'esp'
-	option target 'ACCEPT'
-
-config rule
-	option name 'Allow-ISAKMP'
-	option src 'wan'
-	option dest 'lan'
-	option dest_port '500'
+	option dest_port '33434:33689'
 	option proto 'udp'
-	option target 'ACCEPT'
+	option family 'ipv4'
+	option target 'REJECT'
+	option enabled 'false'
 
 config include
 	option path '/etc/firewall.user'

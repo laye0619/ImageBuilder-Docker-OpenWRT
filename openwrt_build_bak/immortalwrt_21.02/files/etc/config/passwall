@@ -9,11 +9,13 @@ config global
 	option enabled '1'
 	option tcp_node 'd80086f25fa347d99880b7fc39217edf'
 	option chinadns_ng '1'
-	option dns_mode 'dns2tcp'
-	option remote_dns '208.67.220.220'
-	option socks_enabled '1'
 	option udp_node 'tcp'
 	option loglevel 'error'
+	option socks_enabled '0'
+	option dns_mode 'xray'
+	option v2ray_dns_mode 'doh'
+	option remote_dns_doh 'https://208.67.222.222/dns-query'
+	option dns_cache '1'
 
 config global_haproxy
 	option balancing_enable '0'
@@ -34,7 +36,7 @@ config global_forwarding
 	option ipv6_tproxy '0'
 	option sniffing '1'
 	option route_only '0'
-	option tcp_proxy_way 'tproxy'
+	option tcp_proxy_way 'redirect'
 
 config global_other
 	option nodes_ping 'auto_ping tcping'
@@ -141,7 +143,7 @@ config nodes 'd80086f25fa347d99880b7fc39217edf'
 	option remarks 'vless-aws'
 
 config socks '280a61b59c004c0b9369b0aed1786b7a'
-	option enabled '1'
 	option node 'tcp'
 	option port '7891'
 	option http_port '7890'
+	option enabled '0'
