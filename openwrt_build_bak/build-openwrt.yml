@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'release tag'
+        description: 'docker tag'
         required: true
-        default: 'official'
+        default: 'official_22.03'
       repo:
         description: 'repo of openwrt'
         required: true
@@ -24,7 +24,7 @@ on:
       branch:
         description: 'repo branch'
         required: true
-        default: 'master'
+        default: 'openwrt-22.03'
       ssh:
         description: 'SSH connection to Actions'
         required: false
@@ -169,7 +169,8 @@ jobs:
     - name: Copy tar.gz to docker builder folder
       id: copyfile
       run: |
-        cp ${{ env.FIRMWARE }}/*rootfs.tar.gz ./DOCKER/DEV/openwrt/
+        rm -f ./DOCKER/openwrt/*rootfs.tar.gz
+        cp ${{ env.FIRMWARE }}/*rootfs.tar.gz ./DOCKER/openwrt/
         echo "::set-output name=status::success"
 
     - name: Set up QEMU
