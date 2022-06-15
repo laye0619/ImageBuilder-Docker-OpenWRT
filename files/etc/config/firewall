@@ -114,17 +114,3 @@ config rule
 	option dest_port '500'
 	option proto 'udp'
 	option target 'ACCEPT'
-
-config include 'openclash'
-	option type 'script'
-	option path '/var/etc/openclash.include'
-	option reload '1'
-
-config rule
-	option name 'MiCam'
-	list proto 'udp'
-	option src '*'
-	option dest '*'
-	option target 'REJECT'
-	list src_ip '192.168.1.201'
-	list src_ip '192.168.1.202'
