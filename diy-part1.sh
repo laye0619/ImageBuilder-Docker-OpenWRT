@@ -17,11 +17,11 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #echo 'src-git openclash https://github.com/vernesong/OpenClash' >>feeds.conf.default
-#echo 'src-git autoreboot https://github.com/f8q8/luci-app-autoreboot' >>feeds.conf.default
-#echo 'src-git argon https://github.com/jerrykuku/luci-theme-argon' >>feeds.conf.default
 
 #echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >>feeds.conf.default
 
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-#git clone https://github.com/zxl78585/luci-app-autoreboot.git openwrt/package/luci-app-autoreboot
+# sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+# sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+
+echo 'src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall;packages' >> feeds.conf.default
+echo 'src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall;luci' >> feeds.conf.default
