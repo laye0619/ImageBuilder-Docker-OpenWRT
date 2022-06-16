@@ -42,7 +42,6 @@ config global_other
 	option nodes_ping 'auto_ping tcping'
 
 config global_rules
-	option auto_update '0'
 	option chnlist_update '1'
 	option chnroute_update '1'
 	option chnroute6_update '1'
@@ -56,6 +55,9 @@ config global_rules
 	option v2ray_location_asset '/usr/share/v2ray/'
 	option geoip_update '1'
 	option geosite_update '1'
+	option auto_update '1'
+	option week_update '7'
+	option time_update '0'
 
 config global_app
 	option v2ray_file '/usr/bin/v2ray'
