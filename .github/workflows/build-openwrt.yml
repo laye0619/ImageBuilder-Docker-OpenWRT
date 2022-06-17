@@ -24,7 +24,7 @@ on:
       branch:
         description: 'repo branch'
         required: true
-        default: 'openwrt-22.03'
+        default: 'v22.03.0-rc4'
       ssh:
         description: 'SSH connection to Actions'
         required: false
