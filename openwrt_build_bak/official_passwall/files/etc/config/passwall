@@ -1,20 +1,20 @@
 config global
-	option tcp_proxy_mode 'chnroute'
-	option udp_proxy_mode 'chnroute'
 	option localhost_tcp_proxy_mode 'default'
 	option localhost_udp_proxy_mode 'default'
 	option close_log_tcp '0'
 	option close_log_udp '0'
 	option trojan_loglevel '4'
-	option enabled '1'
 	option chinadns_ng '1'
 	option socks_enabled '1'
-	option udp_node 'tcp'
 	option loglevel 'error'
 	option dns_mode 'xray'
 	option v2ray_dns_mode 'doh'
 	option remote_dns_doh 'https://208.67.222.222/dns-query'
 	option dns_cache '1'
+	option enabled '1'
+	option udp_node 'd80086f25fa347d99880b7fc39217edf'
+	option tcp_proxy_mode 'chnroute'
+	option udp_proxy_mode 'chnroute'
 	option tcp_node 'd80086f25fa347d99880b7fc39217edf'
 
 config global_haproxy
@@ -34,8 +34,8 @@ config global_forwarding
 	option udp_redir_ports '1:65535'
 	option accept_icmp '0'
 	option ipv6_tproxy '0'
-	option sniffing '1'
 	option tcp_proxy_way 'tproxy'
+	option sniffing '1'
 	option route_only '1'
 
 config global_other
@@ -47,7 +47,6 @@ config global_rules
 	option chnroute6_update '1'
 	option gfwlist_update '1'
 	list gfwlist_url 'https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt'
-	list chnroute_url 'https://ispip.clang.cn/all_cn.txt'
 	list chnroute6_url 'https://ispip.clang.cn/all_cn_ipv6.txt'
 	list chnlist_url 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf'
 	list chnlist_url 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf'
@@ -58,6 +57,8 @@ config global_rules
 	option auto_update '1'
 	option week_update '7'
 	option time_update '0'
+	list chnroute_url 'https://ispip.clang.cn/all_cn.txt'
+	list chnroute_url 'https://fastly.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/CN-ip-cidr.txt'
 
 config global_app
 	option v2ray_file '/usr/bin/v2ray'
