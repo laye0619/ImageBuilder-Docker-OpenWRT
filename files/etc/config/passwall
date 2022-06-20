@@ -11,11 +11,9 @@ config global
 	option socks_enabled '1'
 	option loglevel 'error'
 	option udp_node 'd80086f25fa347d99880b7fc39217edf'
-	option dns_mode 'xray'
-	option v2ray_dns_mode 'doh'
-	option dns_cache '1'
-	option remote_dns_doh 'https://8.8.4.4/dns-query'
 	option tcp_node 'd80086f25fa347d99880b7fc39217edf'
+	option dns_mode 'udp'
+	option remote_dns '8.8.8.8'
 
 config global_haproxy
 	option balancing_enable '0'
