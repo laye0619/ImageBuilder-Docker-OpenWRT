@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+
+ENV VERSION 0.3.2
+
+COPY Shanghai /usr/share/zoneinfo/Asia/
+
+RUN apt -y update && apt -y install curl && \
+    curl -O https://raw.githubusercontent.com/vaxilu/x-ui/main/install.sh && chmod +x install.sh&& ./install.sh
+
+CMD [ "sh", "-c", "/usr/local/x-ui/x-ui"]
