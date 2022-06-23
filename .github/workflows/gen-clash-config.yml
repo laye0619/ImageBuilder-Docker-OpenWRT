@@ -1,4 +1,4 @@
-name: Generate clash config - my_clash_config.yaml
+name: Generate 'my_clash_config.yaml'
 
 on:
   workflow_dispatch:
