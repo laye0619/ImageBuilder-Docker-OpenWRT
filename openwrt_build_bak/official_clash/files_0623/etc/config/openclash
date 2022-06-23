@@ -73,8 +73,8 @@ config openclash 'config'
 	option github_address_mod '0'
 	option auto_update '1'
 	option config_auto_update_mode '0'
-	option config_update_week_time '1'
 	option auto_update_time '1'
+	option config_update_week_time '2'
 	option config_reload '1'
 
 config dns_servers
