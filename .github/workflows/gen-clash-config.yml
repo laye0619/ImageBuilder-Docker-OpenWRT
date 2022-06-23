@@ -1,10 +1,8 @@
 name: Generate clash config - my_clash_config.yaml
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
+
 jobs:
   build:
 
