@@ -82,7 +82,7 @@ port: 7890
 proxies:
 - name: trojan-aws-lightsail
   password: TRvRsWYIOPOYd7YRUQn6mQ==
-  port: 52012
+  port: 52011
   server: ff.f.laye.wang
   sni: ff.f.laye.wang
   type: trojan
@@ -90,15 +90,15 @@ proxies:
 - cipher: chacha20-ietf-poly1305
   name: ss-aws-lightsail
   password: TRvRsWYIOPOYd7YRUQn6mQ==
-  port: 52002
+  port: 52001
   server: f.laye.wang
   type: ss
   udp: true
 proxy-groups:
 - name: Proxy
   proxies:
-  - ss-aws-lightsail
   - trojan-aws-lightsail
+  - ss-aws-lightsail
   type: select
 rules:
 - IP-CIDR,52.112.0.0/14,DIRECT
