@@ -1,0 +1,30 @@
+proxies:
+  - name: ss-aws-lightsail
+    cipher: chacha20-ietf-poly1305
+    password: TRvRsWYIOPOYd7YRUQn6mQ==
+    port: 52008
+    server: f.laye.wang
+    type: ss
+    udp: true
+  - name: trojan-aws-lightsail
+    password: TRvRsWYIOPOYd7YRUQn6mQ==
+    port: 52012
+    server: ff.f.laye.wang
+    sni: ff.f.laye.wang
+    type: trojan
+    udp: true
+
+proxy-groups:
+  - name: Proxy
+    proxies:
+      - ss-aws-lightsail
+      - trojan-aws-lightsail
+    type: select
+    
+rules:
+  - IP-CIDR,52.112.0.0/14,DIRECT
+  - DOMAIN-SUFFIX,speedtest.net,DIRECT
+  - DOMAIN-SUFFIX,laye.wang,DIRECT
+  - DOMAIN-SUFFIX,notion.so,Proxy
+  - DOMAIN-SUFFIX,500px.com,Proxy
+  - DOMAIN-SUFFIX,githubusercontent.com,Proxy
