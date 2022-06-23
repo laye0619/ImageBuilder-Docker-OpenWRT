@@ -11,6 +11,7 @@ docker cp openwrt_clash:/$etc_folder/$config_folder/ddns ./$files_folder/$etc_fo
 docker cp openwrt_clash:/$etc_folder/$config_folder/dhcp ./$files_folder/$etc_folder/$config_folder/dhcp
 docker cp openwrt_clash:/$etc_folder/$config_folder/firewall ./$files_folder/$etc_folder/$config_folder/firewall
 docker cp openwrt_clash:/$etc_folder/$config_folder/network ./$files_folder/$etc_folder/$config_folder/network
+docker cp openwrt_clash:/$etc_folder/$config_folder/openclash ./$files_folder/$etc_folder/$config_folder/openclash
 
 docker cp openwrt_clash:/$etc_folder/firewall.user ./$files_folder/$etc_folder/firewall.user
 docker cp openwrt_clash:/$etc_folder/rc.local ./$files_folder/$etc_folder/rc.local
