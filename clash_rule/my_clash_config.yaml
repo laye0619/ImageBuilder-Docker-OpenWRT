@@ -90,7 +90,7 @@ proxies:
 - cipher: chacha20-ietf-poly1305
   name: ss-aws-lightsail
   password: TRvRsWYIOPOYd7YRUQn6mQ==
-  port: 52008
+  port: 52002
   server: f.laye.wang
   type: ss
   udp: true
