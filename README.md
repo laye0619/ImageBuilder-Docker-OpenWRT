@@ -7,7 +7,8 @@
 
 加入结合自己的rule和节点信息->my_config_need_to_add_into.yaml
 
-形成my_clash_config.yaml
+形成my_clash_config.yaml; openwrt的clash插件订阅配置文件即可：
+https://raw.githubusercontent.com/laye0619/ImageBuilder-Docker-OpenWRT/main/clash_rule/my_clash_config.yaml
 
 已经写了定时执行脚本 -> gen-clash-config.yml -> github action执行
 
