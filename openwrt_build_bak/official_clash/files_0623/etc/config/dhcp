@@ -18,7 +18,6 @@ config dnsmasq
 	option ednspacket_max '1232'
 	option noresolv '1'
 	option cachesize '0'
-	list server '127.0.0.1#7874'
 
 config dhcp 'lan'
 	option interface 'lan'
