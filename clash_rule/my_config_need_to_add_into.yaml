@@ -19,8 +19,8 @@ proxies:
 proxy-groups:
   - name: Proxy
     proxies:
-      - ss-aws-lightsail
       - trojan-aws-lightsail
+      - ss-aws-lightsail
     type: select
  
     
