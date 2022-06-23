@@ -1,7 +1,17 @@
 
 # [1. 关于openwrt的DIY云编译教程参考](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
-# 2. DockerImageBuilder
+# 2. gen-clash-config自动生成脚本
+
+自己写的python(在clash_rule目录下)，读取Hackl0us/SS-Rule-Snippet的lazy-clash rule。没有使用rule-provider，因为openclash原版内核不支持，使用meta内核在fake-ip mix模式下小米摄像机外网不能访问，单纯使用fake-ip模式又不能转发udp（tproxy）
+
+加入结合自己的rule和节点信息->my_config_need_to_add_into.yaml
+
+形成my_clash_config.yaml
+
+已经写了定时执行脚本 -> gen-clash-config.yml -> github action执行
+
+# 3. DockerImageBuilder
 **可以使用Github Action自动build镜像并上传至dockerhub**
 ## VPS
 - youtube_dl+aria2+bypy for vsp(laye0619/ydl_bypy_vps)
