@@ -33,7 +33,7 @@ jobs:
     - name: Generate clash config
       run: |
         python -u ./clash_rule/get_clash_config.py
-        sshpass -p ${{ secrets.HOME_SERVER_PASS }} scp -P 18100 ./clash_rule/my_clash_config.yaml layewang@home.laye.wang:/home/layewang/Docker/openwrt/etc/openclash/config/
+        cat ./clash_rule/my_clash_config.yaml
 
     - name: Auto Commit Push
       run: |
