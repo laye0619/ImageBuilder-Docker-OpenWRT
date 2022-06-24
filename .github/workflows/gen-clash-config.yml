@@ -30,17 +30,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyyaml requests
 
-    - name: Generate clash config
+    - name: Generate clash config and upload to home server
       run: |
+        cat ${{ secrets.MY_CLASH_INFO }} >> ./clash_rule/my_config_need_to_add_into.yaml
         python -u ./clash_rule/get_clash_config.py
-        cat ./clash_rule/my_clash_config.yaml
         sshpass -p ${{ secrets.HOME_SERVER_PASS }} scp -P 18100 -o StrictHostKeyChecking=no ./clash_rule/my_clash_config.yaml layewang@home.laye.wang:/home/layewang/Docker/openwrt/etc/openclash/config/
- 
-    - name: Auto Commit Push
-      run: |
-        git config --local user.email "laye0619@gmail.com"
-        git config --local user.name "laye0619"
-        git add .
-        git commit -m "update config" -a
-        git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git push
