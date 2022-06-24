@@ -8,7 +8,7 @@ resp = requests.get(
     'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/LAZY_RULES/clash.yaml')
 config_content = yaml.safe_load(resp.text)
 
-with open('./clash_rule/my_config_need_to_add_into.yaml', 'r') as f:
+with open('./clash_rule/my_clash_rules.yaml', 'r') as f:
     my_config = yaml.safe_load(f)
     f.close()
 
