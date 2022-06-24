@@ -24,7 +24,6 @@ jobs:
 
     - name: Generate clash config
       run: |
-        echo ${{ secrets.REPO_TOKEN }} > ./clash_rule/my_config_need_to_add_into.yaml
         python -u ./clash_rule/get_clash_config.py
 
     - name: Auto Commit Push
