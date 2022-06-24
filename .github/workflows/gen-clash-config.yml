@@ -34,6 +34,16 @@ jobs:
       run: |
         python -u ./clash_rule/get_clash_config.py
         cat ./clash_rule/my_clash_config.yaml
+    
+    - name: Run sshpass commands
+      uses: matheusvanzan/sshpass-action@v2
+      with:
+        host: home.laye.wang
+        port: 18100
+        user: layewang
+        pass: ${{ secrets.HOME_SERVER_PASS }}
+        run: |
+          scp -P 18100 ./clash_rule/my_clash_config.yaml layewang@home.laye.wang:/home/layewang/Docker/openwrt/etc/openclash/config/
 
     - name: Auto Commit Push
       run: |
