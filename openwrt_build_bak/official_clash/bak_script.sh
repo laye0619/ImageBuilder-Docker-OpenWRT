@@ -3,7 +3,7 @@
 files_folder=files_$(date "+%m%d")
 etc_folder=etc
 config_folder=config
-docker_container_name=openwrt_clash
+docker_container_name=openwrt_official
 
 cd /home/layewang/Docker/project/ImageBuilder-Docker-OpenWRT/openwrt_build_bak/official_clash/
 mkdir -p $files_folder/$etc_folder/$config_folder
