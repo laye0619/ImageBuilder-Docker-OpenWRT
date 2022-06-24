@@ -2,7 +2,7 @@ name: Generate 'my_clash_config.yaml'
 
 on:
   schedule:
-  - cron: "0 2 * * 1"
+  - cron: '30 12 * * *'
   workflow_dispatch:
 
 jobs:
