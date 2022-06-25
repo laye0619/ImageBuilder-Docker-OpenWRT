@@ -34,4 +34,4 @@ jobs:
       run: |
         echo "${{ secrets.MY_CLASH_INFO }}">>./clash_rule/my_clash_rules.yaml
         python -u ./clash_rule/get_clash_config.py
-        sshpass -p ${{ secrets.HOME_SERVER_PASS }} scp -P 18100 -o StrictHostKeyChecking=no ./clash_rule/my_clash_config.yaml layewang@home.laye.wang:/home/layewang/Docker/openwrt/etc/openclash/config/
+        sshpass -p ${{ secrets.HOME_SERVER_PASS }} scp -P ${{ secrets.HOME_SERVER_PORT }} -o StrictHostKeyChecking=no ./clash_rule/my_clash_config.yaml ${{ secrets.HOME_SERVER_USERNAME }}@${{ secrets.HOME_SERVER_ADDRESS }}:/home/layewang/Docker/openwrt/etc/openclash/config/
