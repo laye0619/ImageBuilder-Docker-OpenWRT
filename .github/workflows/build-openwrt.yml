@@ -65,6 +65,12 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
+    - name: Generate DDNS config
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sed -i "s/INSERT_CLOUDFLARE_TOKEN/${{ secrets.CLOUDFLARE_TOKEN}}/g" ./files/etc/config/ddns
+    
     - name: Clone source code
       working-directory: /workdir
       run: |
