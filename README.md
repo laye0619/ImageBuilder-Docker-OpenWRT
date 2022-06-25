@@ -3,12 +3,16 @@
 
 # 2. gen-clash-config自动生成脚本
 
-自己写的python(在clash_rule目录下)，读取Hackl0us/SS-Rule-Snippet的lazy-clash rule。没有使用rule-provider，因为openclash原版内核不支持，使用meta内核在fake-ip mix模式下小米摄像机外网不能访问，单纯使用fake-ip模式又不能转发udp（tproxy）
-
-加入结合自己的rule和节点信息->my_config_need_to_add_into.yaml
-
-形成my_clash_config.yaml; openwrt的clash插件订阅配置文件即可：
-https://raw.githubusercontent.com/laye0619/ImageBuilder-Docker-OpenWRT/main/clash_rule/my_clash_config.yaml
+- 在github repo中设置的secret（HOME_SERVER_ADDRESS, HOME_SERVER_PORT, HOME_SERVER_PASS，MY_CLASH_INFO），如果clash节点配置有改动，需要在修改右侧记录后，更新repo secret→MY_CLASH_INFO。注意开头和结尾需要加入空行
+- 在repo→clash_rule→my_clash_rules.yaml中，放了我自己的一些规则
+- github action运行Generate 'my_clash_config.yaml后，会
+    - 读取https://github.com/Hackl0us/SS-Rule-Snippet中的clash lazy配置
+    - 读取repo secret→MY_CLASH_INFO中的节点信息
+    - 读取repo→clash_rule→my_clash_rules.yaml中的自定义rules
+    - 拼成完整的my_clash_config.yaml文件并推送到home server的/home/layewang/Docker/openwrt/etc/openclash/config目录中
+    - home server中此目录是openwrt容器映射出来的目录
+- 该github设定定时运行，每次运行随机生成节点端口号最后一位；之前在f.laye.wang安装时设定了52001-52020分别映射到ss和trojan的端口。
+- 在openwrt/openclash中，不需要做其他动作即可实现自动更新config文件
 
 已经写了定时执行脚本 -> gen-clash-config.yml -> github action执行
 
