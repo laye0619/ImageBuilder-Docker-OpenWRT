@@ -1,3 +1,4 @@
+
 config openclash 'config'
 	option proxy_port '7892'
 	option tproxy_port '7895'
@@ -61,7 +62,6 @@ config openclash 'config'
 	option operation_mode 'redir-host'
 	option en_mode 'redir-host-mix'
 	option common_ports '0'
-	option china_ip_route '0'
 	option enable_meta_core '1'
 	option enable_meta_sniffer '1'
 	option enable_meta_sniffer_custom '0'
@@ -83,6 +83,7 @@ config openclash 'config'
 	option cachesize_dns '0'
 	option geo_auto_update '1'
 	option geo_update_day_time '2'
+	option china_ip_route '1'
 
 config dns_servers
 	option group 'nameserver'
@@ -260,3 +261,4 @@ config dns_servers
 	option node_resolve '0'
 	option interface 'Disable'
 	option specific_group 'Disable'
+
