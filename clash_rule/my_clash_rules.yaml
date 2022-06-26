@@ -2,6 +2,6 @@ rules:
   - IP-CIDR,52.112.0.0/14,DIRECT
   - DOMAIN-SUFFIX,speedtest.net,DIRECT
   - DOMAIN-SUFFIX,laye.wang,DIRECT
-  - DOMAIN-SUFFIX,notion.so,Proxy
-  - DOMAIN-SUFFIX,500px.com,Proxy
-  - DOMAIN-SUFFIX,githubusercontent.com,Proxy
+  - DOMAIN-SUFFIX,notion.so,PROXY
+  - DOMAIN-SUFFIX,500px.com,PROXY
+  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
