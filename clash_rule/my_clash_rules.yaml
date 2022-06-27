@@ -1,5 +1,13 @@
 rules:
-  - IP-CIDR,52.112.0.0/14,DIRECT
   - DOMAIN-SUFFIX,speedtest.net,DIRECT
   - DOMAIN-SUFFIX,laye.wang,DIRECT
   - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+
+  # for microsoft teams - go direct
+  - IP-CIDR,52.112.0.0/14,DIRECT
+  - IP-CIDR,13.107.64.0/18,DIRECT
+  - IP-CIDR,52.120.0.0/14,DIRECT
+  - IP-CIDR,52.238.119.141/32,DIRECT
+  - IP-CIDR,52.244.160.207/32,DIRECT
+  - DOMAIN-SUFFIX,lync.com,DIRECT
+  - DOMAIN-SUFFIX,teams.microsoft.com,DIRECT
