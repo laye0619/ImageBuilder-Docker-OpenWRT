@@ -1,1 +1,2 @@
 30 4 * * * sleep 70 && touch /etc/banner && reboot
+0 2 * * 1 /usr/share/openclash/openclash_ipdb.sh
