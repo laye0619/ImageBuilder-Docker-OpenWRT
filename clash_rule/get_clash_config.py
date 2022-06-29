@@ -12,6 +12,7 @@ def get_basic_part() -> dict:
     resp = requests.get(
         'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/LAZY_RULES/Clash_Premium.yaml')
     config_content = yaml.safe_load(resp.text)
+    config_content['dns']['default-nameserver'] = ['223.5.5.5', '119.29.29.29']
     config_content.pop('proxies')
     config_content.pop('proxy-groups')
     config_content.pop('proxy-providers')
