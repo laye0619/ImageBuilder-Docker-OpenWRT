@@ -27,3 +27,5 @@ docker cp $docker_container_name:/$etc_folder/firewall.user ./$files_folder/$etc
 docker cp $docker_container_name:/$etc_folder/rc.local ./$files_folder/$etc_folder/rc.local
 
 docker cp $docker_container_name:/$etc_folder/$sysctld_folder/sysctl-br-netfilter-ip.conf ./$files_folder/$etc_folder/$sysctld_folder/sysctl-br-netfilter-ip.conf
+docker cp $docker_container_name:/$etc_folder/$sysctld_folder/net-ipv6-conf.conf ./$files_folder/$etc_folder/$sysctld_folder/net-ipv6-conf.conf
+
