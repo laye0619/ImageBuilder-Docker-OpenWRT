@@ -24,7 +24,6 @@
         "import sys",
         "sys.path.append('${workspaceFolder}')"
     ],
-    "editor.guides.indentation": false,
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",

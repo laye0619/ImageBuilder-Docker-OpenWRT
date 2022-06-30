@@ -86,7 +86,7 @@ config openclash 'config'
 	option redirect_dns '0'
 	option cachesize_dns '0'
 
-config dns_servers
+	config dns_servers
 	option group 'nameserver'
 	option interface 'Disable'
 	option specific_group 'Disable'
@@ -105,30 +105,29 @@ config dns_servers
 	option enabled '1'
 
 config dns_servers
+	option enabled '1'
 	option interface 'Disable'
 	option specific_group 'Disable'
 	option node_resolve '0'
+	option group 'fallback'
 	option ip 'dns.google'
 	option type 'tls'
-	option enabled '1'
-	option group 'fallback'
 
 config dns_servers
+	option enabled '1'
 	option interface 'Disable'
 	option specific_group 'Disable'
 	option node_resolve '0'
-	option enabled '1'
 	option group 'fallback'
-	option ip 'doh.dns.sb/dns-query'
+	option ip 'dot.sb'
+	option type 'tls'
+
+config dns_servers
+	option enabled '1'
+	option interface 'Disable'
+	option specific_group 'Disable'
+	option node_resolve '0'
+	option group 'fallback'
+	option ip 'doh.opendns.com/dns-query'
 	option type 'https'
-
-config dns_servers
-	option enabled '1'
-	option interface 'Disable'
-	option specific_group 'Disable'
-	option node_resolve '0'
-	option group 'fallback'
-	option ip '1.1.1.1'
-	option port '53'
-	option type 'tcp'
 
