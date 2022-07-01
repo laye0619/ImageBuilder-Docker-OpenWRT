@@ -10,15 +10,15 @@ RULE_FILENAME = 'loyalsoldier_rules.yaml'
 
 
 def retrieve_config_online():
-    resp_hackl0us = requests.get(
-        'https://ghproxy.com/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/LAZY_RULES/Clash_Premium.yaml')
-    resp_loyalsoldier = requests.get(
-        'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/master/README.md')
-
     # resp_hackl0us = requests.get(
-    #     'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/LAZY_RULES/Clash_Premium.yaml')
+    #     'https://ghproxy.com/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/LAZY_RULES/Clash_Premium.yaml')
     # resp_loyalsoldier = requests.get(
-    #     'https://raw.githubusercontent.com/Loyalsoldier/clash-rules/master/README.md')
+    #     'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/master/README.md')
+
+    resp_hackl0us = requests.get(
+        'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/LAZY_RULES/Clash_Premium.yaml')
+    resp_loyalsoldier = requests.get(
+        'https://raw.githubusercontent.com/Loyalsoldier/clash-rules/master/README.md')
 
     # 处理hackl0us配置
     config_content = yaml.safe_load(resp_hackl0us.text)
@@ -31,7 +31,6 @@ def retrieve_config_online():
     providers_dict['rule-providers'] = config_content['rule-providers']
     with open('./clash_rule/hackl0us_providers.yaml', 'w') as f:
         f.write(yaml.dump(providers_dict, sort_keys=False))
-        f.close()
 
     rules_dict = {}
     rules_dict['rules'] = config_content['rules']
