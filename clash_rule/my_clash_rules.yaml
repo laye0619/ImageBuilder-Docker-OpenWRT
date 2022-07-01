@@ -1,7 +1,7 @@
 rules:
   - DOMAIN-SUFFIX,speedtest.net,DIRECT
   - DOMAIN-SUFFIX,laye.wang,DIRECT
-  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+  - DOMAIN,raw.githubusercontent.com,PROXY
 
   # for microsoft teams - go direct
   - IP-CIDR,52.112.0.0/14,DIRECT
