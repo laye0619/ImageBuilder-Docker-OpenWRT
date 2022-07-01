@@ -50,6 +50,8 @@ def retrieve_config_online():
     target_html = etree.HTML(rendered)
     rule_providers = target_html.xpath("//pre//code")[0].text
     rules = target_html.xpath("//pre//code")[1].text
+    if not rule_providers.startswith('rule-providers:') or not rules.startswith('rules:'):
+        raise ValueError('Retrieve config Loyalsoldier error!')
     rule_providers_l_dict = yaml.safe_load(rule_providers)
     rules_l_dict = yaml.safe_load(rules)
     with open('./clash_rule/loyalsoldier_providers.yaml', 'w') as f:
