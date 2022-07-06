@@ -34,7 +34,6 @@ RUN sudo apt-get update \
     && conda create -y -n backtest_rqalpha python==3.9.7 \
     && conda create -y -n my_portfolio_analysis python==3.9.7 \
     && conda create -y -n ofanalysis python==3.9.7 \
-    && conda create -y -n totango python==3.9.7 \
     && conda create -y -n general python==3.9.7 \
     && conda clean --all -f -y \
 
