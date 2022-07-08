@@ -20,11 +20,11 @@ on:
       repo:
         description: 'repo of openwrt'
         required: true
-        default: 'https://www.github.com/openwrt/openwrt'
+        default: 'https://git.openwrt.org/openwrt/openwrt.git'
       branch:
-        description: 'repo branch'
+        description: 'repo branch/tag'
         required: true
-        default: 'openwrt-22.03'
+        default: 'v22.03.0-rc5'
       ssh:
         description: 'SSH connection to Actions'
         required: false

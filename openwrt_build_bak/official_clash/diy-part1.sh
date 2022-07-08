@@ -25,3 +25,11 @@ echo 'src-git openclash https://github.com/vernesong/OpenClash' >>feeds.conf.def
 
 # echo 'src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall;packages' >> feeds.conf.default
 # echo 'src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall;luci' >> feeds.conf.default
+
+
+# Update the feeds
+# ./scripts/feeds update -a
+# ./scripts/feeds install -a
+ 
+# Configure the firmware image and the kernel
+# make menuconfig
