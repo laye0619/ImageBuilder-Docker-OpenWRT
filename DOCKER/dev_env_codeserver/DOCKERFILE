@@ -44,3 +44,4 @@ RUN sudo apt-get update \
     && code-server --install-extension GrapeCity.gc-excelviewer
 
 COPY --chown=1000 ./settings.json /home/coder/.local/share/code-server/User/
+COPY --chown=1000 --chmod=+x ./init_env.sh /home/coder/
