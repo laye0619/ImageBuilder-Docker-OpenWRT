@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-my_projects=(backtest_rqalpha my_portfolio_analysis ofanalysis)
+my_python_projects=(backtest_rqalpha my_portfolio_analysis ofanalysis)
+my_other_project=(code_bak ImageBuilder-Docker-OpenWRT)
 
 export http_proxy="http://192.168.1.2:7890"
 export https_proxy="http://192.168.1.2:7890"
@@ -20,9 +21,22 @@ conda update -y --all \
 
 # create 'general' env
 conda create -y -n general python==3.9.12
+if [[ $if_clone = y ]]
+then
+    mkdir /home/coder/project/general
+fi
 
-# git clone my projects and create and config env for them
-for var in ${my_projects[*]}
+# git clone my other projects and create and config env for them
+if [[ $if_clone = y ]]
+then
+    for var in ${my_other_project[*]}
+    do
+        git clone https://laye0619:$github_token@github.com/laye0619/$var.git /home/coder/project/$var
+    done
+fi
+
+# git clone my python projects and create and config env for them
+for var in ${my_python_projects[*]}
 do
     if [[ $if_clone = y ]]
     then
