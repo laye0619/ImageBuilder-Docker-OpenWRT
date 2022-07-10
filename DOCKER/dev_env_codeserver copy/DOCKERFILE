@@ -29,6 +29,14 @@ RUN sudo apt-get update \
     && conda init zsh \
     && conda init bash \
 
+    # setup my conda env
+    && conda update -y --all \
+    && conda create -y -n backtest_rqalpha python==3.9.12 \
+    && conda create -y -n my_portfolio_analysis python==3.9.12 \
+    && conda create -y -n ofanalysis python==3.9.12 \
+    && conda create -y -n general python==3.9.12 \
+    && conda clean --all -f -y \
+
     # set up codeserver
     && code-server --install-extension alefragnani.project-manager \
     && code-server --install-extension formulahendry.code-runner \
