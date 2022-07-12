@@ -2,7 +2,6 @@
     "terminal.integrated.inheritEnv": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "terminal.integrated.copyOnSelection": true,
-    "terminal.external.linuxExec": "zsh",
     "terminal.integrated.defaultProfile.linux": "zsh",
     "files.autoSave": "afterDelay",
     "editor.fontSize": 14.5,
