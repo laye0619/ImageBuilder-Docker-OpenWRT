@@ -132,7 +132,7 @@ my_clash_config.update(get_rule_providers_part(RULE_PROVIDERS_FILENAME))
 my_clash_config.update(get_rules_part(RULE_FILENAME))
 
 # loyalsoldier apple music 总断断续续，临时修改成hackl0us的apple规则
-my_clash_config = change_apple_rule_provider_by_hackl0us(my_clash_config)
+# my_clash_config = change_apple_rule_provider_by_hackl0us(my_clash_config)
 
 with open('./clash_rule/my_clash_config.yaml', 'w') as f:
     f.write(yaml.dump(my_clash_config, sort_keys=False))
