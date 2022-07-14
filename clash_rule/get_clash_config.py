@@ -91,10 +91,48 @@ def get_rule_providers_part(filename: str) -> dict:
     return my_config
 
 
+def change_apple_rule_provider_by_hackl0us(my_clash_config: dict) -> dict:
+    """_summary_
+       loyalsoldier apple music 总断断续续，临时修改成hackl0us的apple规则
+    """
+    h_rules = get_rules_part('hackl0us_rules.yaml')
+    rule_provider_apple_direct = 'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-direct.yaml'
+    rule_provider_apple_proxy = 'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-proxy.yaml'
+
+    target_rule_provider_apple_direct_dict = my_clash_config['rule-providers']['apple'].copy(
+    )
+    target_rule_provider_apple_proxy_dict = my_clash_config['rule-providers']['apple'].copy(
+    )
+    my_clash_config['rule-providers']['apple-direct'] = target_rule_provider_apple_direct_dict
+    my_clash_config['rule-providers']['apple-direct']['behavior'] = 'classical'
+    my_clash_config['rule-providers']['apple-direct']['url'] = rule_provider_apple_direct
+    my_clash_config['rule-providers']['apple-direct']['path'] = './ruleset/apple-direct.yaml'
+    my_clash_config['rule-providers']['apple-proxy'] = target_rule_provider_apple_proxy_dict
+    my_clash_config['rule-providers']['apple-proxy']['behavior'] = 'classical'
+    my_clash_config['rule-providers']['apple-proxy']['url'] = rule_provider_apple_proxy
+    my_clash_config['rule-providers']['apple-proxy']['path'] = './ruleset/apple-proxy.yaml'
+    my_clash_config['rule-providers'].pop('icloud')
+    my_clash_config['rule-providers'].pop('apple')
+
+    rules_apple_direct = 'RULE-SET,apple-direct,DIRECT'
+    rules_apple_proxy = 'RULE-SET,apple-proxy,PROXY'
+    my_clash_config['rules'].insert(my_clash_config['rules'].index(
+        'RULE-SET,reject,REJECT')+1, rules_apple_proxy)
+    my_clash_config['rules'].insert(my_clash_config['rules'].index(
+        'RULE-SET,reject,REJECT')+1, rules_apple_direct)
+    my_clash_config['rules'].remove('RULE-SET,icloud,DIRECT')
+    my_clash_config['rules'].remove('RULE-SET,apple,DIRECT')
+    return my_clash_config
+
+
 retrieve_config_online()
 my_clash_config = get_basic_part()
 my_clash_config.update(get_proxies_and_groups_part())
 my_clash_config.update(get_rule_providers_part(RULE_PROVIDERS_FILENAME))
 my_clash_config.update(get_rules_part(RULE_FILENAME))
+
+# loyalsoldier apple music 总断断续续，临时修改成hackl0us的apple规则
+my_clash_config = change_apple_rule_provider_by_hackl0us(my_clash_config)
+
 with open('./clash_rule/my_clash_config.yaml', 'w') as f:
     f.write(yaml.dump(my_clash_config, sort_keys=False))
