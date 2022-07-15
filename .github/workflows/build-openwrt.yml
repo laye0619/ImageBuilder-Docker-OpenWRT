@@ -16,7 +16,7 @@ on:
       tag:
         description: 'release tag'
         required: true
-        default: 'official_22.03'
+        default: 'v22.03.0-rc5'
       repo:
         description: 'repo of openwrt'
         required: true
