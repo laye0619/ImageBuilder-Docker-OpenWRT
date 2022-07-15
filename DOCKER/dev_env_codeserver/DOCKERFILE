@@ -38,9 +38,7 @@ RUN sudo apt-get update \
     && code-server --install-extension mongodb.mongodb-vscode \
     && code-server --install-extension KevinRose.vsc-python-indent \
     && code-server --install-extension njpwerner.autodocstring \
-    && code-server --install-extension humao.rest-client \
     && code-server --install-extension hediet.vscode-drawio \
-    && code-server --install-extension redhat.vscode-yaml \
     && code-server --install-extension GrapeCity.gc-excelviewer
 
 COPY --chown=1000 ./settings.json /home/coder/.local/share/code-server/User/
