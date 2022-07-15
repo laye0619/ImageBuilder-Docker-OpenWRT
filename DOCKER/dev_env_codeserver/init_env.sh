@@ -50,6 +50,7 @@ do
     if [[ $var = backtest_rqalpha ]];
     then
         rqalpha download-bundle
+        conda install -c conda-forge ta-lib
     fi
 done
 
