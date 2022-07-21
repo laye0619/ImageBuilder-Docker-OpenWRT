@@ -21,10 +21,6 @@ then
     read github_token
 fi
 
-# promote if download rqalpha bundle data
-echo -n 'Need to download rqalpha bundle data? (y/n) '
-read if_rqdata
-
 # setup my conda env
 source /home/coder/conda/bin/activate base
 conda update -y --all \
@@ -62,10 +58,7 @@ do
     if [[ $var = inv ]];
     then
         conda install -y -c conda-forge ta-lib
-        if [[ $if_rqdata = y ]];
-        then
-            rqalpha download-bundle
-        fi
+        rqalpha download-bundle
     fi
 done
 
