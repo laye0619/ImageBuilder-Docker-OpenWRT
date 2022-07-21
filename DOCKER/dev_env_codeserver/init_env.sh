@@ -8,6 +8,9 @@ export https_proxy="http://192.168.1.2:7890"
 
 git config --global http.proxy socks5://192.168.1.2:7891
 git config --global https.proxy socks5://192.168.1.2:7891
+git config --global user.email "laye0619@gmail.com"
+git config --global user.name "laye0619"
+
 
 # promote the github token if needed
 echo -n 'Need to git clone project? (y/n) '
