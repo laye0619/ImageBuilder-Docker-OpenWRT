@@ -6,6 +6,9 @@ my_other_project=(code_bak ImageBuilder-Docker-OpenWRT)
 export http_proxy="http://192.168.1.2:7890"
 export https_proxy="http://192.168.1.2:7890"
 
+git config --global http.proxy socks5://192.168.1.2:7891
+git config --global https.proxy socks5://192.168.1.2:7891
+
 # promote the github token if needed
 echo -n 'Need to git clone project? (y/n) '
 read if_clone
