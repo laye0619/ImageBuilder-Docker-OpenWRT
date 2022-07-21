@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-my_python_projects=(backtest_rqalpha my_portfolio_analysis ofanalysis)
+my_python_projects=(inv)
 my_other_project=(code_bak ImageBuilder-Docker-OpenWRT)
 
 export http_proxy="http://192.168.1.2:7890"
@@ -17,6 +17,10 @@ then
     echo -n 'Input github token: '
     read github_token
 fi
+
+# promote if download rqalpha bundle data
+echo -n 'Need to download rqalpha bundle data? (y/n) '
+read if_rqdata
 
 # setup my conda env
 source /home/coder/conda/bin/activate base
@@ -50,10 +54,15 @@ do
     source /home/coder/conda/bin/activate $var
     conda install -n $var ipykernel --update-deps --force-reinstall -y
     pip install -r /home/coder/project/$var/requirements.txt
-    if [[ $var = backtest_rqalpha ]];
+
+
+    if [[ $var = inv ]];
     then
-        rqalpha download-bundle
         conda install -c conda-forge ta-lib
+        if [[ $if_rqdata = y ]];
+        then
+            rqalpha download-bundle
+        fi
     fi
 done
 
