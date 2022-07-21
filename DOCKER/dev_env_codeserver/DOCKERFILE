@@ -4,7 +4,7 @@ FROM codercom/code-server:latest
 ENV PATH "/home/coder/conda/bin:${PATH}"
 
 USER 1000
-RUN sudo apt-get update \
+RUN sudo apt-get update && apt-get upgrade -y \
     && sudo apt-get install -y wget \
 
     # install chrome (optional)
