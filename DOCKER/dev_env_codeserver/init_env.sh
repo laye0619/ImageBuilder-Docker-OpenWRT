@@ -58,7 +58,7 @@ do
 
     if [[ $var = inv ]];
     then
-        conda install -c conda-forge ta-lib
+        conda install -y -c conda-forge ta-lib
         if [[ $if_rqdata = y ]];
         then
             rqalpha download-bundle
