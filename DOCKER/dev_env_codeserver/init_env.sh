@@ -59,6 +59,7 @@ do
     then
         conda install -y -c conda-forge ta-lib
         rqalpha download-bundle
+        pip install -e /home/coder/project/$var/backtest/rqalpha-mod-csvds
     fi
 done
 
