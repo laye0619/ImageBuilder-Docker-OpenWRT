@@ -2,7 +2,7 @@
 
 my_python_projects=(inv)
 my_other_project=(code_bak ImageBuilder-Docker-OpenWRT)
-my_mod=(csvds, transaction)
+my_mod=(csvds transaction)
 
 export http_proxy="http://192.168.1.2:7890"
 export https_proxy="http://192.168.1.2:7890"
