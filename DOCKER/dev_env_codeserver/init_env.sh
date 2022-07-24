@@ -2,6 +2,7 @@
 
 my_python_projects=(inv)
 my_other_project=(code_bak ImageBuilder-Docker-OpenWRT)
+my_mod=(csvds, transaction)
 
 export http_proxy="http://192.168.1.2:7890"
 export https_proxy="http://192.168.1.2:7890"
@@ -59,7 +60,10 @@ do
     then
         conda install -y -c conda-forge ta-lib
         rqalpha download-bundle
-        pip install -e /home/coder/project/$var/backtest/rqalpha-mod-csvds
+        for mod in ${my_mod[*]}
+        do
+            pip install -e /home/coder/project/$var/backtest/rqalpha-mod-$mod
+        done
     fi
 done
 
